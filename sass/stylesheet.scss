@@ -1,8 +1,9 @@
 /*variables*/
 
-$primary-color:#4fc3f7; 
+$primary-color:#9ea7aa; 
 $secondary-color:#c5cae9;
 $text-color:#1c313a;
+$hover-color:#37474f;
 $small-font: 10px;
 $header-font-size: 30px;
 $large-font: 50px;
@@ -16,12 +17,27 @@ $header-font:sans-serif;
   border: $property;
 }
 
+/*animations*/
+@keyframes jobtitle {
+	from {color: $hover-color;}
+	to {color:$secondary-color;}
+}
+@keyframes slideIn {
+  from {
+    margin-bottom: 100%;
+    width: 300%; 
+  }
+  to {
+    margin-top: 0%;
+    width: 100%;
+  }
+}
+
 
 /*styles*/
 #index {
 	display: grid;
 	width: 100vw;
-	padding:0;
 	grid-template-areas: 
 		'navBar'
 		'home';
@@ -31,11 +47,16 @@ $header-font:sans-serif;
 	color: $secondary-color;
 	font-size: $header-font-size;
 	font-family: $main-font;
+	width: 100%;
+	padding-bottom: 0.5rem;
+	border-bottom: $hover-color 4px solid;
 		ul {
 			list-style-type: none;
+			padding: 0px 20px 10px 20px;
 		}
 		li {
   			float: left;
+  			width: 20%;
   			text-transform: uppercase;
 			}
 
@@ -44,45 +65,102 @@ $header-font:sans-serif;
  			padding: 5px 15px 5px 15px;
  			color:inherit;
  			text-decoration: none;
+ 			text-align: center;
 			}
 		li a:hover {
-  			background-color: #111;
+  			background-color:$hover-color;
 					}
 		}
 
 .home {
-	img{
-		width:20rem;
-		border:1px solid transparent;
-		border-radius:60%;
-		display: block;
-		margin-left: auto;
-  		margin-right: auto;
-	}
-	h1{
-		text-align: center;
-		text-transform: uppercase;
-		color:$secondary-color;
-		font-family:$header-font;
-	}
-	h2{
-		text-align:center;
-		color:$secondary-color;
-		font-family:$header-font;
-	}
+	width: 100%;
+	background-image: url(wall.jpg);
+		img{
+			width:20rem;
+			height: 25rem;
+			border:1px solid transparent;
+			border-radius:60%;
+			display: block;
+			padding-top: 3rem;
+			margin-left: auto;
+	  		margin-right: auto;
+			}
+		h1{
+			text-align: center;
+			text-transform: uppercase;
+			color:$hover-color;
+			font-family:$header-font;
+			font-size: 2rem;
+			}
+		h2{
+			text-align:center;
+			color:$secondary-color;
+			font-family:$header-font;
+			padding-bottom: 15rem;
+			animation-name: jobtitle;
+			animation-duration: 5s;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+			}
 }
 
 
 .container {
 	display:grid;
 	width:100vw;
+	height: 100vh;
 	padding:0;
+	background-image: url(wall.jpg);
 	grid-template-areas:
-		'head head'
-		'info info'
-		'info info'
-		'info info';
-}
+		'head head head'
+		'info info info'
+		'info info info'
+		'info info info'; 
+	}
+	.head {
+		text-align:justify;
+	}
+		.head h2 {
+			text-align: center;
+			color: $primary-color;
+			border-bottom: $hover-color 4px solid;
+			font-family: sans-serif;
+			animation: slideIn;
+			animation-duration: 1s;
+		}
+		.head i {
+			text-align: center;
+			color: $primary-color;
+			align-content: center;
+		}
+	.info {
+		text-align: center;
+	}
+		.info h3 {
+			color: $primary-color;
+			font-family: calibri;
+			font-style:italic;
+			}
+		 .info p {
+			text-align:center;
+			color:$primary-color;
+			font-family:calibri;
+			padding-left: 30rem;
+			padding-right: 30rem;
+		    }
+		 .info i {
+			color: $primary-color;
+			font-size: 30px;
+			letter-spacing: 10px;
+		    }
+		 .info img {
+		 	width: 30%;
+		 	height: 20%;
+		 	align-content: center;
+		 	border-radius:60%;
+		 }
+
+
 
 @media screen and (max-width: 1200px){
 	.container {
@@ -100,7 +178,7 @@ $header-font:sans-serif;
 		width: 100vw;
 		padding:0;
 		grid-template-areas:
-		'narBar'
+		'navBar'
 		'home';
 	}
 }
@@ -121,7 +199,7 @@ $header-font:sans-serif;
 		width: 100vw;
 		padding:0;
 		grid-template-areas:
-		'narBar'
+		'navBar'
 		'home';
 	}
 }
