@@ -1,23 +1,10 @@
-/*variables*/
-
-$primary-color:#9ea7aa; 
-$secondary-color:#c5cae9;
-$text-color:#1c313a;
-$hover-color:#37474f;
-$small-font: 10px;
-$header-font-size: 30px;
-$large-font: 50px;
-$main-font:calibri;
-$header-font:sans-serif;
+@import "./mixins";
+@import "./variables";
 
 
-/*mixins*/
-@mixin grid {
-	display: grid;
-	width: 100%;
-}
 
 /*animations*/
+
 @keyframes jobtitle {
 	from {color: $hover-color;}
 	to {color:$secondary-color;}
@@ -162,7 +149,6 @@ $header-font:sans-serif;
 			color:$secondary-color;
 			font-family:$header-font;
 			font-size: 1.5rem;
-			padding-bottom: 15rem;
 			animation-name: jobtitle;
 			animation-duration: 5s;
 			animation-iteration-count: infinite;
@@ -175,7 +161,7 @@ $header-font:sans-serif;
 	@include grid;
 	height: 100vh;
 	padding:0;
-	background-image: url(wall.jpg);
+	background-image: url(img/wall.jpg);
 	background-repeat: repeat-y;
 	grid-template-areas:
 		'head head head'
@@ -213,8 +199,8 @@ $header-font:sans-serif;
 			text-align:center;
 			color:$text-color;
 			font-family:calibri;
-			padding-left: 30rem;
-			padding-right: 30rem;
+			padding-left: 15rem;
+			padding-right: 15rem;
 		    }
 		 .info i {
 			color: $primary-color;
