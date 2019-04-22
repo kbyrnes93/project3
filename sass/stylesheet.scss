@@ -14,7 +14,7 @@ $header-font:sans-serif;
 /*mixins*/
 @mixin grid {
 	display: grid;
-	width: 100vw;
+	width: 100%;
 }
 
 /*animations*/
@@ -35,6 +35,7 @@ $header-font:sans-serif;
 
 
 /*styles*/
+
 #index {
 	@include grid;
 	grid-template-areas: 
@@ -43,6 +44,7 @@ $header-font:sans-serif;
 		}
 
 .navBar{
+	grid-area: navBar;
 	color: $secondary-color;
 	background-color: white;
 	font-size: $header-font-size;
@@ -51,31 +53,93 @@ $header-font:sans-serif;
 	padding-bottom: 0.5rem;
 	padding-top: 0.5rem;
 	border-bottom: $hover-color 4px solid;
-		ul {
-			list-style-type: none;
-			padding: 0px 20px 10px 20px;
-		}
-		li {
-  			float: left;
-  			width: 20%;
-  			text-transform: uppercase;
-			}
+}
 
-		a {
-  			display: block;
- 			padding: 5px 15px 5px 15px;
- 			color:inherit;
- 			text-decoration: none;
- 			text-align: center;
-			}
-		li a:hover {
-  			background-color:$hover-color;
-					}
-		}
+.navBar > .navBar-header {
+  display: inline;
+}
+.navBar > .navBar-header > .navBar-title {
+  display: inline-block;
+  font-size: 1.5rem;
+  color:  $secondary-color;
+  padding: 0.5em 0.5em 0.5em 0em;
+}
+.navBar > .navBar-btn {
+  display: none;
+}
+
+.navBar > .navBar-links {
+  display: inline;
+  float: right;
+  font-size: 1.5rem;
+}
+
+.navBar > .navBar-links > a {
+  display: inline-block;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  text-decoration: none;
+  color: $secondary-color;
+}
+
+.navBar > .navBar-links > a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.navBar > #navBar-check {
+  display: none;
+}
+
+@media (max-width:700px) {
+  .navBar > .navBar-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .navBar > .navBar-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .navBar > .navBar-btn > label:hover,.navBar  #navBar-check:checked ~ .navBar-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .navBar > .navBar-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid #eee;
+  }
+  .navBar > .navBar-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .navBar > .navBar-links > a {
+    display: block;
+    width: 100%;
+  }
+  .navBar > #navBar-check:not(:checked) ~ .navBar-links {
+    height: 0px;
+  }
+  .navBar > #navBar-check:checked ~ .navBar-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
 
 .home {
+	grid-area:home;
 	width: 100%;
-	background-image: url(wall.jpg);
+	background-image: url(img/wall.jpg);
+	background-repeat: repeat-y;
 		img{
 			width:20rem;
 			height: 25rem;
@@ -112,6 +176,7 @@ $header-font:sans-serif;
 	height: 100vh;
 	padding:0;
 	background-image: url(wall.jpg);
+	background-repeat: repeat-y;
 	grid-template-areas:
 		'head head head'
 		'info info info'
@@ -120,13 +185,13 @@ $header-font:sans-serif;
 	}
 	.head {
 		text-align:justify;
+		grid-area:head;
 	}
 		.head h2 {
 			text-align: center;
 			font-size: 3rem;
 			text-transform: uppercase;
-			color: $primary-color;
-			border-bottom: $hover-color 2px solid;
+			color: $primary-color;	
 			font-family: sans-serif;
 			animation: slideIn;
 			animation-duration: 1s;
@@ -170,18 +235,22 @@ $header-font:sans-serif;
 	@include grid;
 	padding:0;
 	grid-template-areas:
-		'head head'
-		'info info'
-		'info info'
-		'info info';
+		'head '
+		'info '
+		'info '
+		'info ';
 	}
 	#index {
 		@include grid;
-		width: 100vw;
+		width: 100%;
 		padding:0;
 		grid-template-areas:
-		'navBar navBar'
-		'home home';
+		'navBar'
+		'home';
+	}
+	.info p {
+			padding-left: 3rem;
+			padding-right: 3rem;
 	}
 
 }
@@ -191,17 +260,17 @@ $header-font:sans-serif;
 	@include grid;
 	padding:0;
 	grid-template-areas:
-		'head head'
-		'info info'
-		'info info'
-		'info info';
+		'head'
+		'info'
+		'info'
+		'info';
 	}
 	#index {
 		@include grid;
 		padding:0;
 		grid-template-areas:
-		'navBar narBar'
-		'home home';
+		'navBar '
+		'home ';
 	}
 
 }
